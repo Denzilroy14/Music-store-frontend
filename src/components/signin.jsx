@@ -22,7 +22,7 @@ const SignUp = () => {
 
     try {
       // Send a POST request to the backend '/signup' URL
-      const response = await axios.post('http://localhost:5000/signup', userData);
+      const response = await axios.post('https://musicalbackend.pythonanywhere.com/signup', userData);
 
       // If the signup is successful, display the success message
       setMessage(response.data.message);
