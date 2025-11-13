@@ -16,7 +16,7 @@ const Profile = () => {
 
       try {
         // Send the token in the Authorization header
-        const response = await axios.get('http://localhost:5000/profile', {
+        const response = await axios.get('https://musicalbackend.pythonanywhere.com/profile', {
           headers: {
             Authorization: `Bearer ${token}`
           }
