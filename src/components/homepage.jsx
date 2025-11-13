@@ -12,7 +12,7 @@ const ProductList = () => {
   // Check if user is logged in by checking localStorage for the auth token
   const isLoggedIn = localStorage.getItem('token');
   useEffect(()=>{
-    axios.get('http://localhost:5000/get_category')
+    axios.get('https://musicalbackend.pythonanywhere.com/get_category')
     .then((res)=>{
       setCategory(res.data.data);
     })
@@ -23,7 +23,7 @@ const ProductList = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5000/home')
+    axios.get('https://musicalbackend.pythonanywhere.com/home')
       .then(response => {
         setProducts(response.data);
       })
@@ -40,7 +40,7 @@ const ProductList = () => {
       navigate('/login');
     } else {
       // If logged in, send a POST request to add the product to the cart
-      axios.post('http://localhost:5000/add_to_cart', {
+      axios.post('https://musicalbackend.pythonanywhere.com/add_to_cart', {
         prod_id: productId,
         prod_quan: quantity
       }, {
