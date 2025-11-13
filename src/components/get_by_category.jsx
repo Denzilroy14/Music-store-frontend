@@ -9,7 +9,7 @@ const GetByCategory = () => {
 
   useEffect(() => {
     // Fetch products based on category
-    axios.get(`http://localhost:5000/display_by_category/${category}`)
+    axios.get(`https://musicalbackend.pythonanywhere.com/display_by_category/${category}`)
       .then(response => {
         setProducts(response.data);
       })
