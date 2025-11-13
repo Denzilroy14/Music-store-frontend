@@ -3,7 +3,7 @@ import axios from 'axios';
 export default function GetCategory(){
     const [category,setCategory]=useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:5000/get_category')
+        axios.get('https://musicalbackend.pythonanywhere.com/get_category')
         .then((res)=>{
             setCategory(res.data.data);
         })
