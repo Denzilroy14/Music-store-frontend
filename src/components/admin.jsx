@@ -46,7 +46,7 @@ const Admin = () => {
     form.append("category", formData.category);
 
     try {
-      const response = await axios.post("http://localhost:5000/add_products", form, {
+      const response = await axios.post("https://musicalbackend.pythonanywhere.com/add_products", form, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
