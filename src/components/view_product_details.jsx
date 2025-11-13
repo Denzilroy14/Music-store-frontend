@@ -14,7 +14,7 @@ const ProductDetails = () => {
   // Fetch product details and reviews
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/view_product_details/${prod_id}`)
+      .get(`https://musicalbackend.pythonanywhere.com/view_product_details/${prod_id}`)
       .then((response) => {
         const productData = response.data[0]; // Assuming the response returns an array with one object
         setProduct(productData);
@@ -33,7 +33,7 @@ const ProductDetails = () => {
     } else {
       axios
         .post(
-          'http://localhost:5000/add_to_cart',
+          'https://musicalbackend.pythonanywhere.com/add_to_cart',
           {
             prod_id: prod_id,
             prod_quan: quantity,
