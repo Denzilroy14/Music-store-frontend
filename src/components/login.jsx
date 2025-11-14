@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate} from 'react-router-dom'; // For redirecting the user
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Login = () => {
 
     try {
       const response = await axios.post('https://musicalbackend.pythonanywhere.com/login', {
-        username,
+        email,
         password,
       });
 
@@ -41,8 +41,8 @@ const Login = () => {
           <label>Username</label>
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
