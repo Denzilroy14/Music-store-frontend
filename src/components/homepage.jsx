@@ -12,7 +12,7 @@ const ProductList = () => {
   // Check if user is logged in by checking localStorage for the auth token
   const isLoggedIn = localStorage.getItem('token');
   useEffect(()=>{
-    axios.get('http://localhost:5000/get_category')
+    axios.get('https://musicalbackend.pythonanywhere.com/get_category')
     .then((res)=>{
       setCategory(res.data.data);
     })
@@ -23,7 +23,7 @@ const ProductList = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5000/home')
+    axios.get('https://musicalbackend.pythonanywhere.com/home')
       .then(response => {
         setProducts(response.data);
       })
@@ -40,7 +40,7 @@ const ProductList = () => {
       navigate('/login');
     } else {
       // If logged in, send a POST request to add the product to the cart
-      axios.post('http://localhost:5000/add_to_cart', {
+      axios.post('https://musicalbackend.pythonanywhere.com/add_to_cart', {
         prod_id: productId,
         prod_quan: quantity
       }, {
@@ -61,12 +61,22 @@ const ProductList = () => {
   return (
     <div className="product-page">
       <div className="sidebar">
+        <div className='Navigation-bar'>
+        <nav>
+          <a href='/signup'>Signin</a>
+          <br></br>
+          <a href='/login'>Login</a>
+          <br></br>
+          <a href='/profile'>MyCart</a>
+          <br></br>
+        </nav>
+      </div>
         <h2>Filter by Category</h2>
         {category.length === 0 ? (
           <p>No categories available</p>
         ) : (
             category.map((item) => (
-              <div>
+              <div className='Categories'>
                 <a href={`/display_by_category/${item}`}>{item}</a>
               </div>
             ))
