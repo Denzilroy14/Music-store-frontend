@@ -4,9 +4,10 @@ import axios from 'axios';
 import { useNavigate} from 'react-router-dom'; // For redirecting the user
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [phone_number, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successmessage,setSuccessmessage]=useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -14,7 +15,7 @@ const Login = () => {
 
     try {
       const response = await axios.post('https://musicalbackend.pythonanywhere.com/login', {
-        email,
+        phone_number,
         password,
       });
 
@@ -22,11 +23,14 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
 
       // Redirect to the profile page
+      setSuccessmessage('Login successfull');
+      setSuccessmessage('');
       navigate('/');
     } catch (error) {
       // If login fails, display error message
       if (error.response && error.response.data) {
         setErrorMessage(error.response.data.message);
+        setErrorMessage('');
       } else {
         setErrorMessage('An error occurred. Please try again.');
       }
@@ -38,11 +42,11 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Username</label>
+          <label>Phone-number</label>
           <input
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={phone_number}
+            onChange={(e) => setPhone(e.target.value)}
             required
           />
         </div>
@@ -56,6 +60,7 @@ const Login = () => {
           />
         </div>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        {successmessage && <p style={{ color: 'green' }}>{successmessage}</p>}
         <button type="submit">Login</button>
       </form>
     </div>

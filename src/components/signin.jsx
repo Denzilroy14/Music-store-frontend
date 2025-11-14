@@ -5,6 +5,7 @@ const SignUp = () => {
   // States to store form inputs and response messages
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [phone_number, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -18,11 +19,12 @@ const SignUp = () => {
       username,
       email,
       password,
+      phone_number,
     };
 
     try {
       // Send a POST request to the backend '/signup' URL
-      const response = await axios.post('https://musicalbackend.pythonanywhere.com/signup', userData);
+      const response = await axios.post('http://localhost:5000/signup', userData);
 
       // If the signup is successful, display the success message
       setMessage(response.data.message);
@@ -62,6 +64,17 @@ const SignUp = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+         <div>
+          <label htmlFor="phone">Phone</label>
+          <input
+            type="text"
+            id="phone"
+            value={phone_number}
+            onChange={(e) => setPhone(e.target.value)}
             required
           />
         </div>

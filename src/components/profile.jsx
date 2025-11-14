@@ -15,16 +15,19 @@ const Profile = () => {
       }
 
       try {
-        // Send the token in the Authorization header
-        const response = await axios.get('https://musicalbackend.pythonanywhere.com/profile', {
+        const response = await axios.get('http://localhost:5000/profile', {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           }
         });
-        
-        setUserDetails(response.data);
+
+        if (response.data.length === 0) {
+          setError('No items in your cart');
+        } else {
+          setUserDetails(response.data);
+        }
       } catch (err) {
-        setError(err.response?.data?.error || 'An error occurred');
+        setError(err.response?.data?.message);
       }
     };
 
@@ -32,7 +35,7 @@ const Profile = () => {
   }, []);
 
   if (error) {
-    return <div>{error}</div>;
+    return <div><h1>{error}</h1></div>;
   }
 
   if (!userDetails) {
@@ -41,12 +44,11 @@ const Profile = () => {
 
   return (
     <div>
-      <h1>{userDetails.user_name}'Profile</h1>
-      <p>product name:{userDetails.product_name}</p>
-      <p>product qty:{userDetails.product_quantity}</p>
-      <p>Total_amt:{userDetails.product_amount}</p>
-    </div>
-  );
+      <h1>{userDetails[0]?.username}'s Profile</h1> {/* Assuming the first item will have the username */}
+      <p>{userDetails[0]?.product_name}</p>
+      <p>{userDetails[0]?.totalamt}</p>
+     </div>
+     );
 };
 
 export default Profile;
