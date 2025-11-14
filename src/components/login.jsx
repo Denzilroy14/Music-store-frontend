@@ -22,7 +22,7 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
 
       // Redirect to the profile page
-      navigate('/profile');
+      navigate('/');
     } catch (error) {
       // If login fails, display error message
       if (error.response && error.response.data) {
