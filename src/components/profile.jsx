@@ -45,8 +45,11 @@ const Profile = () => {
   return (
     <div>
       <h1>{userDetails[0]?.username}'s Profile</h1> {/* Assuming the first item will have the username */}
-      <p>{userDetails[0]?.product_name}</p>
-      <p>{userDetails[0]?.totalamt}</p>
+      <h3>Cart details:</h3>
+      <img src={userDetails[0]?.product_img} alt="Product_image"/>
+      <h3>Product name:{userDetails[0]?.product_name}</h3>
+      <h3>Product qty choosen:{userDetails[0]?.product_qty}</h3>
+      <h3>Total:{userDetails[0]?.totalamt}</h3>
      </div>
      );
 };
