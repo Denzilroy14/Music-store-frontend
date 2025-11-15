@@ -43,7 +43,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <div className='profile-container'>
       <h1>{userDetails[0]?.username}'s Profile</h1> {/* Assuming the first item will have the username */}
       <h3>Cart details:</h3>
       <img src={userDetails[0]?.product_img} alt="Product_image"/>
