@@ -24,7 +24,7 @@ const SignUp = () => {
 
     try {
       // Send a POST request to the backend '/signup' URL
-      const response = await axios.post('http://localhost:5000/signup', userData);
+      const response = await axios.post('https://musicalbackend.pythonanywhere.com/signup', userData);
 
       // If the signup is successful, display the success message
       setMessage(response.data.message);
@@ -46,7 +46,7 @@ const SignUp = () => {
 
       {/* Sign-up form */}
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className='signin-fields'>
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -57,7 +57,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div>
+        <div className='signin-fields'>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -68,7 +68,7 @@ const SignUp = () => {
           />
         </div>
 
-         <div>
+         <div className='signin-fields'>
           <label htmlFor="phone">Phone</label>
           <input
             type="text"
@@ -79,7 +79,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div>
+        <div className='signin-fields'>
           <label htmlFor="password">Password</label>
           <input
             type="password"
