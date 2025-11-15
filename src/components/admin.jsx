@@ -70,7 +70,7 @@ const Admin = () => {
   return (
     <div>
       <h2>Add New Product</h2>
-
+      {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <label>Product Name:</label>
         <input
@@ -126,8 +126,6 @@ const Admin = () => {
 
         <button type="submit">Add Product</button>
       </form>
-
-      {message && <p>{message}</p>}
     </div>
   );
 };
