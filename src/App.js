@@ -12,6 +12,9 @@ function App() {
   return (
     <Router>
       <div>
+        {/*Hero section*/}
+      </div>
+      <div>
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/display_by_category/:category" element={<GetByCategory/>} />

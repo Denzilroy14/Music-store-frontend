@@ -10,7 +10,9 @@ const ProductList = () => {
   const [quantity, setQuantity] = useState(1) // State to track product quantity
   const navigate = useNavigate();  // To navigate 
   // Check if user is logged in by checking localStorage for the auth token
+  const [isSideBarVisible,setIsSideBarVisible]=useState(false);
   const isLoggedIn = localStorage.getItem('token');
+ // const [isSideBarVisible,setSideBarVisible]=useState(false);
   useEffect(()=>{
     axios.get('https://musicalbackend.pythonanywhere.com/get_category')
     .then((res)=>{
@@ -32,6 +34,9 @@ const ProductList = () => {
         console.error(err);
       });
   }, []);
+
+  //toglle function for sidebar
+  const toggleSideBar=()=>setIsSideBarVisible(prev=>!prev);
 
   // Handle Add to Cart button click
   const addToCart = (productId) => {
@@ -57,20 +62,14 @@ const ProductList = () => {
       });
     }
   };
-  
   return (
     <div className="product-page">
-      <div className="sidebar">
-        <div className='Navigation-bar'>
-        <nav>
-          <a href='/signup'>Signin</a>
-          <br></br>
-          <a href='/login'>Login</a>
-          <br></br>
-          <a href='/profile'>MyCart</a>
-          <br></br>
-        </nav>
-      </div>
+      <button onClick={toggleSideBar} className='Sidebar-toggle-button'>
+        <span className='bar'></span>
+        <span className='bar'></span>
+        <span className='bar'></span>
+        </button>
+        {isSideBarVisible &&<div className="sidebar">
         <h2>Filter by Category</h2>
         {category.length === 0 ? (
           <p>No categories available</p>
@@ -81,7 +80,7 @@ const ProductList = () => {
               </div>
             ))
         )}
-      </div>
+      </div>}
 
       <div className="product-list-container">
         <h1>Product List</h1>
