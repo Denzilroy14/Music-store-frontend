@@ -8,10 +8,18 @@ import Admin from './components/admin';
 import ProductDetails from './components/view_product_details';
 import GetCategory from './components/get_category';
 import GetByCategory from './components/get_by_category';
+//import { useNavigate } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <div>
+      <div className='Homepage-container'>
+        <div className='Navigation-container'>
+          <nav>
+            <a href='/signup'>Sign-in</a>
+            <a href='/login'>Login</a>
+            <a href='/profile'>🛒My cart</a>
+          </nav>
+        </div>
         {/*Hero section*/}
       </div>
       <div>

@@ -184,3 +184,122 @@ p {
     left: 10px;
   }
 }
+/**************************************/
+/* Basic reset for links */
+/* Basic reset for links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Main container for the navigation */
+.Navigation-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+}
+
+/* Style for the navigation bar */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Style for individual links */
+nav a {
+  padding: 10px 15px;
+  margin: 0 10px;  /* Spacing between links */
+  font-size: 16px;
+  color: #333;  /* Text color */
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for the links */
+nav a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Cart specific styles */
+.cart-link {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Cart icon styling */
+.cart-icon {
+  margin-right: 8px; /* Space between the icon and text */
+  font-size: 18px; /* Size of the cart icon */
+}
+
+/* Cart badge (e.g., item count) */
+.cart-link::after {
+  content: "3";  /* Example: displaying "3" items in cart */
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  .Navigation-container {
+    justify-content: space-between; /* Space links across the container */
+    padding: 10px 15px;
+  }
+
+  /* Adjust the links layout for smaller screens */
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Adjust font sizes and spacing for mobile */
+  nav a {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 5px 0;  /* Adjusted margin for smaller screens */
+  }
+
+  /* Adjust cart icon size for mobile */
+  .cart-icon {
+    font-size: 16px;
+  }
+
+  /* Adjust cart badge size for mobile */
+  .cart-link::after {
+    font-size: 10px;
+    padding: 2px 4px;
+    top: -3px;
+    right: -8px;
+  }
+}
+
+/* Tablet devices */
+@media (max-width: 1024px) {
+  nav {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 15px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  nav a {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
